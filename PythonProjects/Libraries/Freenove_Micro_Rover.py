@@ -20,7 +20,7 @@ class Micro_Rover(object):
         sleep(5)
     def set_pwm(self, channel, on, off):
         if on is None or off is None:
-            i2c.writ(self.add, bytearray([0x06+4*channel]), repeat=False)
+            i2c.write(self.add, bytearray([0x06+4*channel]), repeat=False)
             data = i2c.read(self.add, 4)
             return ustruct.unpack('<HH', data)
         i2c.write(self.add, bytearray([0x06+4*channel, on & 0xFF]), repeat=False)
